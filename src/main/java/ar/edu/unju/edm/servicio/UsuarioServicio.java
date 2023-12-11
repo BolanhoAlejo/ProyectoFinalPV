@@ -20,6 +20,9 @@ public interface UsuarioServicio extends UserDetailsService{
 	Optional<Usuario> obtenerUsuarioActual();
 	
 	Optional<Usuario> buscarPorId(Long id);
+	
+	Usuario findByEmail(String email);
+
 
 	
 }

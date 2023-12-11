@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ar.edu.unju.edm.controlador.dto.UsuarioRegistroDTO;
+import ar.edu.unju.edm.modelo.Usuario;
 import ar.edu.unju.edm.servicio.UsuarioServicio;
 
 @Controller
@@ -32,7 +33,13 @@ public class RegistroUsuarioControlador {
 	
 	@PostMapping
 	public String registrarCuentaDeUsuario(@ModelAttribute("usuario") UsuarioRegistroDTO registroDTO) {
-		usuarioServicio.guardar(registroDTO);
-		return "redirect:/registro?exito";
+	    Usuario usuarioExistente = usuarioServicio.findByEmail(registroDTO.getEmail());
+	    if (usuarioExistente != null) {
+	        return "redirect:/registro?error";
+	    }
+
+	    usuarioServicio.guardar(registroDTO);
+	    return "redirect:/registro?exito";
 	}
+
 }

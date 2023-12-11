@@ -79,5 +79,11 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 	public Optional<Usuario> buscarPorId(Long id) {
 	    return usuarioRepositorio.findById(id);
 	}
+	
+	@Override
+	public Usuario findByEmail(String email) {
+	    return usuarioRepositorio.findByEmail(email);
+	}
+
 
 }
