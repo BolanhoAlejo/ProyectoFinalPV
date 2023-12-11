@@ -18,4 +18,8 @@ public interface UsuarioServicio extends UserDetailsService{
 	Usuario buscarUsuario(String email);
 
 	Optional<Usuario> obtenerUsuarioActual();
+	
+	Optional<Usuario> buscarPorId(Long id);
+
+	
 }

@@ -74,4 +74,10 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 		}
 		return Optional.ofNullable(buscarUsuario(auth.getName()));
 	}
+
+	@Override
+	public Optional<Usuario> buscarPorId(Long id) {
+	    return usuarioRepositorio.findById(id);
+	}
+
 }
